@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.explore.dao.ExamMapper">
+  <resultMap id="BaseResultMap" type="com.explore.pojo.Exam">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="exam_type_id" jdbcType="INTEGER" property="examTypeId" />
+    <result column="subscribe" jdbcType="VARCHAR" property="subscribe" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="creator_id" jdbcType="INTEGER" property="creatorId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.explore.pojo.Exam">
+    insert into exam (id, name, subject_id, 
+      exam_type_id, subscribe, start_time, 
+      end_time, creator_id, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{subjectId,jdbcType=INTEGER}, 
+      #{examTypeId,jdbcType=INTEGER}, #{subscribe,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{creatorId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.explore.pojo.Exam">
+    insert into exam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="subjectId != null">
+        subject_id,
+      </if>
+      <if test="examTypeId != null">
+        exam_type_id,
+      </if>
+      <if test="subscribe != null">
+        subscribe,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="creatorId != null">
+        creator_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="examTypeId != null">
+        #{examTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="subscribe != null">
+        #{subscribe,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorId != null">
+        #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.explore.pojo.Exam">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="subscribe" jdbcType="VARCHAR" property="subscribe" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.explore.pojo.Exam">
+    insert into exam (id, name, subject_id, 
+      subscribe, position, start_time, 
+      end_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{subjectId,jdbcType=INTEGER}, 
+      #{subscribe,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.explore.pojo.Exam">
+    insert into exam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="subjectId != null">
+        subject_id,
+      </if>
+      <if test="subscribe != null">
+        subscribe,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="subscribe != null">
+        #{subscribe,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.explore.pojo.Exam">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="exam_type_id" jdbcType="INTEGER" property="examTypeId" />
+    <result column="subscribe" jdbcType="VARCHAR" property="subscribe" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="creator_id" jdbcType="INTEGER" property="creatorId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.explore.pojo.Exam">
+    insert into exam (id, name, subject_id, 
+      exam_type_id, subscribe, start_time, 
+      end_time, creator_id, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{subjectId,jdbcType=INTEGER}, 
+      #{examTypeId,jdbcType=INTEGER}, #{subscribe,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{creatorId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.explore.pojo.Exam">
+    insert into exam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="subjectId != null">
+        subject_id,
+      </if>
+      <if test="examTypeId != null">
+        exam_type_id,
+      </if>
+      <if test="subscribe != null">
+        subscribe,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="creatorId != null">
+        creator_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="examTypeId != null">
+        #{examTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="subscribe != null">
+        #{subscribe,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorId != null">
+        #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.explore.pojo.Exam">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="subscribe" jdbcType="VARCHAR" property="subscribe" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.explore.pojo.Exam">
+    insert into exam (id, name, subject_id, 
+      subscribe, position, start_time, 
+      end_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{subjectId,jdbcType=INTEGER}, 
+      #{subscribe,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.explore.pojo.Exam">
+    insert into exam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="subjectId != null">
+        subject_id,
+      </if>
+      <if test="subscribe != null">
+        subscribe,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="subscribe != null">
+        #{subscribe,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.explore.pojo.Exam">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="exam_type_id" jdbcType="INTEGER" property="examTypeId" />
+    <result column="subscribe" jdbcType="VARCHAR" property="subscribe" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="creator_id" jdbcType="INTEGER" property="creatorId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.explore.pojo.Exam">
+    insert into exam (id, name, subject_id, 
+      exam_type_id, subscribe, start_time, 
+      end_time, creator_id, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{subjectId,jdbcType=INTEGER}, 
+      #{examTypeId,jdbcType=INTEGER}, #{subscribe,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{creatorId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.explore.pojo.Exam">
+    insert into exam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="subjectId != null">
+        subject_id,
+      </if>
+      <if test="examTypeId != null">
+        exam_type_id,
+      </if>
+      <if test="subscribe != null">
+        subscribe,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="creatorId != null">
+        creator_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="examTypeId != null">
+        #{examTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="subscribe != null">
+        #{subscribe,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorId != null">
+        #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.explore.pojo.Exam">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="subscribe" jdbcType="VARCHAR" property="subscribe" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.explore.pojo.Exam">
+    insert into exam (id, name, subject_id, 
+      subscribe, position, start_time, 
+      end_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{subjectId,jdbcType=INTEGER}, 
+      #{subscribe,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.explore.pojo.Exam">
+    insert into exam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="subjectId != null">
+        subject_id,
+      </if>
+      <if test="subscribe != null">
+        subscribe,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="subscribe != null">
+        #{subscribe,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

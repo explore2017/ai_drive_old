@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.explore.dao.OrganMapper">
+  <resultMap id="BaseResultMap" type="com.explore.pojo.Organ">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="organ_name" jdbcType="VARCHAR" property="organName" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+  </resultMap>
+  <insert id="insert" parameterType="com.explore.pojo.Organ">
+    insert into organ (id, organ_name, position, 
+      number)
+    values (#{id,jdbcType=INTEGER}, #{organName,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.explore.pojo.Organ">
+    insert into organ
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="organName != null">
+        organ_name,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="organName != null">
+        #{organName,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.explore.pojo.Organ">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="organ_name" jdbcType="VARCHAR" property="organName" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+  </resultMap>
+  <insert id="insert" parameterType="com.explore.pojo.Organ">
+    insert into organ (id, organ_name, position, 
+      number)
+    values (#{id,jdbcType=INTEGER}, #{organName,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.explore.pojo.Organ">
+    insert into organ
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="organName != null">
+        organ_name,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="organName != null">
+        #{organName,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.explore.pojo.Organ">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="organ_name" jdbcType="VARCHAR" property="organName" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+  </resultMap>
+  <insert id="insert" parameterType="com.explore.pojo.Organ">
+    insert into organ (id, organ_name, position, 
+      number)
+    values (#{id,jdbcType=INTEGER}, #{organName,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.explore.pojo.Organ">
+    insert into organ
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="organName != null">
+        organ_name,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="organName != null">
+        #{organName,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
