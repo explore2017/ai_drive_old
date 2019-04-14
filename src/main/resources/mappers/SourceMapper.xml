@@ -1,133 +1,82 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.explore.dao.SourceMapper">
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Source">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="source_name" jdbcType="VARCHAR" property="sourceName" />
-    <result column="source_position" jdbcType="VARCHAR" property="sourcePosition" />
-    <result column="source_value" jdbcType="REAL" property="sourceValue" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.explore.dao.SourceMapper" >
+  <resultMap id="BaseResultMap" type="com.explore.pojo.Source" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="source_name" property="sourceName" jdbcType="VARCHAR" />
+    <result column="source_position" property="sourcePosition" jdbcType="VARCHAR" />
+    <result column="source_value" property="sourceValue" jdbcType="REAL" />
   </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Source">
+  <sql id="Base_Column_List" >
+    id, source_name, source_position, source_value
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from source
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from source
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.explore.pojo.Source" >
     insert into source (id, source_name, source_position, 
       source_value)
     values (#{id,jdbcType=INTEGER}, #{sourceName,jdbcType=VARCHAR}, #{sourcePosition,jdbcType=VARCHAR}, 
       #{sourceValue,jdbcType=REAL})
   </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Source">
+  <insert id="insertSelective" parameterType="com.explore.pojo.Source" >
     insert into source
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         id,
       </if>
-      <if test="sourceName != null">
+      <if test="sourceName != null" >
         source_name,
       </if>
-      <if test="sourcePosition != null">
+      <if test="sourcePosition != null" >
         source_position,
       </if>
-      <if test="sourceValue != null">
+      <if test="sourceValue != null" >
         source_value,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="sourceName != null">
+      <if test="sourceName != null" >
         #{sourceName,jdbcType=VARCHAR},
       </if>
-      <if test="sourcePosition != null">
+      <if test="sourcePosition != null" >
         #{sourcePosition,jdbcType=VARCHAR},
       </if>
-      <if test="sourceValue != null">
+      <if test="sourceValue != null" >
         #{sourceValue,jdbcType=REAL},
       </if>
     </trim>
   </insert>
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Source">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="source_name" jdbcType="VARCHAR" property="sourceName" />
-    <result column="source_position" jdbcType="VARCHAR" property="sourcePosition" />
-    <result column="source_value" jdbcType="REAL" property="sourceValue" />
-  </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Source">
-    insert into source (id, source_name, source_position, 
-      source_value)
-    values (#{id,jdbcType=INTEGER}, #{sourceName,jdbcType=VARCHAR}, #{sourcePosition,jdbcType=VARCHAR}, 
-      #{sourceValue,jdbcType=REAL})
-  </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Source">
-    insert into source
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+  <update id="updateByPrimaryKeySelective" parameterType="com.explore.pojo.Source" >
+    update source
+    <set >
+      <if test="sourceName != null" >
+        source_name = #{sourceName,jdbcType=VARCHAR},
       </if>
-      <if test="sourceName != null">
-        source_name,
+      <if test="sourcePosition != null" >
+        source_position = #{sourcePosition,jdbcType=VARCHAR},
       </if>
-      <if test="sourcePosition != null">
-        source_position,
+      <if test="sourceValue != null" >
+        source_value = #{sourceValue,jdbcType=REAL},
       </if>
-      <if test="sourceValue != null">
-        source_value,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="sourceName != null">
-        #{sourceName,jdbcType=VARCHAR},
-      </if>
-      <if test="sourcePosition != null">
-        #{sourcePosition,jdbcType=VARCHAR},
-      </if>
-      <if test="sourceValue != null">
-        #{sourceValue,jdbcType=REAL},
-      </if>
-    </trim>
-  </insert>
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Source">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="source_name" jdbcType="VARCHAR" property="sourceName" />
-    <result column="source_position" jdbcType="VARCHAR" property="sourcePosition" />
-    <result column="source_value" jdbcType="REAL" property="sourceValue" />
-  </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Source">
-    insert into source (id, source_name, source_position, 
-      source_value)
-    values (#{id,jdbcType=INTEGER}, #{sourceName,jdbcType=VARCHAR}, #{sourcePosition,jdbcType=VARCHAR}, 
-      #{sourceValue,jdbcType=REAL})
-  </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Source">
-    insert into source
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="sourceName != null">
-        source_name,
-      </if>
-      <if test="sourcePosition != null">
-        source_position,
-      </if>
-      <if test="sourceValue != null">
-        source_value,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="sourceName != null">
-        #{sourceName,jdbcType=VARCHAR},
-      </if>
-      <if test="sourcePosition != null">
-        #{sourcePosition,jdbcType=VARCHAR},
-      </if>
-      <if test="sourceValue != null">
-        #{sourceValue,jdbcType=REAL},
-      </if>
-    </trim>
-  </insert>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.explore.pojo.Source" >
+    update source
+    set source_name = #{sourceName,jdbcType=VARCHAR},
+      source_position = #{sourcePosition,jdbcType=VARCHAR},
+      source_value = #{sourceValue,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

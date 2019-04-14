@@ -1,19 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.explore.dao.CoachMapper">
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Coach">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="campus_id" jdbcType="INTEGER" property="campusId" />
-    <result column="organ_id" jdbcType="INTEGER" property="organId" />
-    <result column="vehicle_id" jdbcType="INTEGER" property="vehicleId" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.explore.dao.CoachMapper" >
+  <resultMap id="BaseResultMap" type="com.explore.pojo.Coach" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="job_id" property="jobId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="campus_id" property="campusId" jdbcType="INTEGER" />
+    <result column="organ_id" property="organId" jdbcType="INTEGER" />
+    <result column="vehicle_id" property="vehicleId" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Coach">
+  <sql id="Base_Column_List" >
+    id, job_id, name, campus_id, organ_id, vehicle_id, phone, email, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from coach
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from coach
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.explore.pojo.Coach" >
     insert into coach (id, job_id, name, 
       campus_id, organ_id, vehicle_id, 
       phone, email, create_time, 
@@ -23,249 +36,117 @@
       #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Coach">
+  <insert id="insertSelective" parameterType="com.explore.pojo.Coach" >
     insert into coach
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         id,
       </if>
-      <if test="jobId != null">
+      <if test="jobId != null" >
         job_id,
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         name,
       </if>
-      <if test="campusId != null">
+      <if test="campusId != null" >
         campus_id,
       </if>
-      <if test="organId != null">
+      <if test="organId != null" >
         organ_id,
       </if>
-      <if test="vehicleId != null">
+      <if test="vehicleId != null" >
         vehicle_id,
       </if>
-      <if test="phone != null">
+      <if test="phone != null" >
         phone,
       </if>
-      <if test="email != null">
+      <if test="email != null" >
         email,
       </if>
-      <if test="createTime != null">
+      <if test="createTime != null" >
         create_time,
       </if>
-      <if test="updateTime != null">
+      <if test="updateTime != null" >
         update_time,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="jobId != null">
+      <if test="jobId != null" >
         #{jobId,jdbcType=VARCHAR},
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="campusId != null">
+      <if test="campusId != null" >
         #{campusId,jdbcType=INTEGER},
       </if>
-      <if test="organId != null">
+      <if test="organId != null" >
         #{organId,jdbcType=INTEGER},
       </if>
-      <if test="vehicleId != null">
+      <if test="vehicleId != null" >
         #{vehicleId,jdbcType=INTEGER},
       </if>
-      <if test="phone != null">
+      <if test="phone != null" >
         #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="email != null">
+      <if test="email != null" >
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
+      <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null">
+      <if test="updateTime != null" >
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Coach">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="campus_id" jdbcType="INTEGER" property="campusId" />
-    <result column="organ_id" jdbcType="INTEGER" property="organId" />
-    <result column="vehicle_id" jdbcType="INTEGER" property="vehicleId" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-  </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Coach">
-    insert into coach (id, job_id, name, 
-      campus_id, organ_id, vehicle_id, 
-      phone, email, create_time, 
-      update_time)
-    values (#{id,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{campusId,jdbcType=INTEGER}, #{organId,jdbcType=INTEGER}, #{vehicleId,jdbcType=INTEGER}, 
-      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Coach">
-    insert into coach
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+  <update id="updateByPrimaryKeySelective" parameterType="com.explore.pojo.Coach" >
+    update coach
+    <set >
+      <if test="jobId != null" >
+        job_id = #{jobId,jdbcType=VARCHAR},
       </if>
-      <if test="jobId != null">
-        job_id,
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="name != null">
-        name,
+      <if test="campusId != null" >
+        campus_id = #{campusId,jdbcType=INTEGER},
       </if>
-      <if test="campusId != null">
-        campus_id,
+      <if test="organId != null" >
+        organ_id = #{organId,jdbcType=INTEGER},
       </if>
-      <if test="organId != null">
-        organ_id,
+      <if test="vehicleId != null" >
+        vehicle_id = #{vehicleId,jdbcType=INTEGER},
       </if>
-      <if test="vehicleId != null">
-        vehicle_id,
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null">
-        phone,
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="email != null">
-        email,
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createTime != null">
-        create_time,
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null">
-        update_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="jobId != null">
-        #{jobId,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="campusId != null">
-        #{campusId,jdbcType=INTEGER},
-      </if>
-      <if test="organId != null">
-        #{organId,jdbcType=INTEGER},
-      </if>
-      <if test="vehicleId != null">
-        #{vehicleId,jdbcType=INTEGER},
-      </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Coach">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="campus_id" jdbcType="INTEGER" property="campusId" />
-    <result column="organ_id" jdbcType="INTEGER" property="organId" />
-    <result column="vehicle_id" jdbcType="INTEGER" property="vehicleId" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-  </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Coach">
-    insert into coach (id, job_id, name, 
-      campus_id, organ_id, vehicle_id, 
-      phone, email, create_time, 
-      update_time)
-    values (#{id,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{campusId,jdbcType=INTEGER}, #{organId,jdbcType=INTEGER}, #{vehicleId,jdbcType=INTEGER}, 
-      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Coach">
-    insert into coach
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="jobId != null">
-        job_id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="campusId != null">
-        campus_id,
-      </if>
-      <if test="organId != null">
-        organ_id,
-      </if>
-      <if test="vehicleId != null">
-        vehicle_id,
-      </if>
-      <if test="phone != null">
-        phone,
-      </if>
-      <if test="email != null">
-        email,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="updateTime != null">
-        update_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="jobId != null">
-        #{jobId,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="campusId != null">
-        #{campusId,jdbcType=INTEGER},
-      </if>
-      <if test="organId != null">
-        #{organId,jdbcType=INTEGER},
-      </if>
-      <if test="vehicleId != null">
-        #{vehicleId,jdbcType=INTEGER},
-      </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.explore.pojo.Coach" >
+    update coach
+    set job_id = #{jobId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      campus_id = #{campusId,jdbcType=INTEGER},
+      organ_id = #{organId,jdbcType=INTEGER},
+      vehicle_id = #{vehicleId,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

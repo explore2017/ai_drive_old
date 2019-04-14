@@ -1,133 +1,82 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.explore.dao.OrganMapper">
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Organ">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="organ_name" jdbcType="VARCHAR" property="organName" />
-    <result column="position" jdbcType="VARCHAR" property="position" />
-    <result column="number" jdbcType="INTEGER" property="number" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.explore.dao.OrganMapper" >
+  <resultMap id="BaseResultMap" type="com.explore.pojo.Organ" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="organ_name" property="organName" jdbcType="VARCHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
   </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Organ">
+  <sql id="Base_Column_List" >
+    id, organ_name, position, number
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from organ
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from organ
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.explore.pojo.Organ" >
     insert into organ (id, organ_name, position, 
       number)
     values (#{id,jdbcType=INTEGER}, #{organName,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
       #{number,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Organ">
+  <insert id="insertSelective" parameterType="com.explore.pojo.Organ" >
     insert into organ
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         id,
       </if>
-      <if test="organName != null">
+      <if test="organName != null" >
         organ_name,
       </if>
-      <if test="position != null">
+      <if test="position != null" >
         position,
       </if>
-      <if test="number != null">
+      <if test="number != null" >
         number,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="organName != null">
+      <if test="organName != null" >
         #{organName,jdbcType=VARCHAR},
       </if>
-      <if test="position != null">
+      <if test="position != null" >
         #{position,jdbcType=VARCHAR},
       </if>
-      <if test="number != null">
+      <if test="number != null" >
         #{number,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Organ">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="organ_name" jdbcType="VARCHAR" property="organName" />
-    <result column="position" jdbcType="VARCHAR" property="position" />
-    <result column="number" jdbcType="INTEGER" property="number" />
-  </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Organ">
-    insert into organ (id, organ_name, position, 
-      number)
-    values (#{id,jdbcType=INTEGER}, #{organName,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
-      #{number,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Organ">
-    insert into organ
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+  <update id="updateByPrimaryKeySelective" parameterType="com.explore.pojo.Organ" >
+    update organ
+    <set >
+      <if test="organName != null" >
+        organ_name = #{organName,jdbcType=VARCHAR},
       </if>
-      <if test="organName != null">
-        organ_name,
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
       </if>
-      <if test="position != null">
-        position,
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
       </if>
-      <if test="number != null">
-        number,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="organName != null">
-        #{organName,jdbcType=VARCHAR},
-      </if>
-      <if test="position != null">
-        #{position,jdbcType=VARCHAR},
-      </if>
-      <if test="number != null">
-        #{number,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Organ">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="organ_name" jdbcType="VARCHAR" property="organName" />
-    <result column="position" jdbcType="VARCHAR" property="position" />
-    <result column="number" jdbcType="INTEGER" property="number" />
-  </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Organ">
-    insert into organ (id, organ_name, position, 
-      number)
-    values (#{id,jdbcType=INTEGER}, #{organName,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
-      #{number,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Organ">
-    insert into organ
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="organName != null">
-        organ_name,
-      </if>
-      <if test="position != null">
-        position,
-      </if>
-      <if test="number != null">
-        number,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="organName != null">
-        #{organName,jdbcType=VARCHAR},
-      </if>
-      <if test="position != null">
-        #{position,jdbcType=VARCHAR},
-      </if>
-      <if test="number != null">
-        #{number,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.explore.pojo.Organ" >
+    update organ
+    set organ_name = #{organName,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      number = #{number,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

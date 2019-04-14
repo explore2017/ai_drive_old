@@ -1,310 +1,71 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.explore.dao.SubjectMapper">
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Subject">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="subject_name" jdbcType="VARCHAR" property="subjectName" />
-    <result column="price" jdbcType="REAL" property="price" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.explore.dao.SubjectMapper" >
+  <resultMap id="BaseResultMap" type="com.explore.pojo.Subject" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="subject_name" property="subjectName" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="REAL" />
   </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Subject">
+  <sql id="Base_Column_List" >
+    id, subject_name, price
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from subject
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from subject
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.explore.pojo.Subject" >
     insert into subject (id, subject_name, price
       )
     values (#{id,jdbcType=INTEGER}, #{subjectName,jdbcType=VARCHAR}, #{price,jdbcType=REAL}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Subject">
+  <insert id="insertSelective" parameterType="com.explore.pojo.Subject" >
     insert into subject
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         id,
       </if>
-      <if test="subjectName != null">
+      <if test="subjectName != null" >
         subject_name,
       </if>
-      <if test="price != null">
+      <if test="price != null" >
         price,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="subjectName != null">
+      <if test="subjectName != null" >
         #{subjectName,jdbcType=VARCHAR},
       </if>
-      <if test="price != null">
+      <if test="price != null" >
         #{price,jdbcType=REAL},
       </if>
     </trim>
   </insert>
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Subject">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="subject_no" jdbcType="VARCHAR" property="subjectNo" />
-    <result column="subject_code" jdbcType="VARCHAR" property="subjectCode" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="creator" jdbcType="VARCHAR" property="creator" />
-  </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Subject">
-    insert into subject (id, name, subject_no, 
-      subject_code, create_time, update_time, 
-      creator)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{subjectNo,jdbcType=VARCHAR}, 
-      #{subjectCode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{creator,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Subject">
-    insert into subject
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+  <update id="updateByPrimaryKeySelective" parameterType="com.explore.pojo.Subject" >
+    update subject
+    <set >
+      <if test="subjectName != null" >
+        subject_name = #{subjectName,jdbcType=VARCHAR},
       </if>
-      <if test="name != null">
-        name,
+      <if test="price != null" >
+        price = #{price,jdbcType=REAL},
       </if>
-      <if test="subjectNo != null">
-        subject_no,
-      </if>
-      <if test="subjectCode != null">
-        subject_code,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="updateTime != null">
-        update_time,
-      </if>
-      <if test="creator != null">
-        creator,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="subjectNo != null">
-        #{subjectNo,jdbcType=VARCHAR},
-      </if>
-      <if test="subjectCode != null">
-        #{subjectCode,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="creator != null">
-        #{creator,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Subject">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="subject_name" jdbcType="VARCHAR" property="subjectName" />
-    <result column="price" jdbcType="REAL" property="price" />
-  </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Subject">
-    insert into subject (id, subject_name, price
-      )
-    values (#{id,jdbcType=INTEGER}, #{subjectName,jdbcType=VARCHAR}, #{price,jdbcType=REAL}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Subject">
-    insert into subject
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="subjectName != null">
-        subject_name,
-      </if>
-      <if test="price != null">
-        price,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="subjectName != null">
-        #{subjectName,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null">
-        #{price,jdbcType=REAL},
-      </if>
-    </trim>
-  </insert>
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Subject">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="subject_no" jdbcType="VARCHAR" property="subjectNo" />
-    <result column="subject_code" jdbcType="VARCHAR" property="subjectCode" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="creator" jdbcType="VARCHAR" property="creator" />
-  </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Subject">
-    insert into subject (id, name, subject_no, 
-      subject_code, create_time, update_time, 
-      creator)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{subjectNo,jdbcType=VARCHAR}, 
-      #{subjectCode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{creator,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Subject">
-    insert into subject
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="subjectNo != null">
-        subject_no,
-      </if>
-      <if test="subjectCode != null">
-        subject_code,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="updateTime != null">
-        update_time,
-      </if>
-      <if test="creator != null">
-        creator,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="subjectNo != null">
-        #{subjectNo,jdbcType=VARCHAR},
-      </if>
-      <if test="subjectCode != null">
-        #{subjectCode,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="creator != null">
-        #{creator,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Subject">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="subject_name" jdbcType="VARCHAR" property="subjectName" />
-    <result column="price" jdbcType="REAL" property="price" />
-  </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Subject">
-    insert into subject (id, subject_name, price
-      )
-    values (#{id,jdbcType=INTEGER}, #{subjectName,jdbcType=VARCHAR}, #{price,jdbcType=REAL}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Subject">
-    insert into subject
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="subjectName != null">
-        subject_name,
-      </if>
-      <if test="price != null">
-        price,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="subjectName != null">
-        #{subjectName,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null">
-        #{price,jdbcType=REAL},
-      </if>
-    </trim>
-  </insert>
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Subject">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="subject_no" jdbcType="VARCHAR" property="subjectNo" />
-    <result column="subject_code" jdbcType="VARCHAR" property="subjectCode" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="creator" jdbcType="VARCHAR" property="creator" />
-  </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Subject">
-    insert into subject (id, name, subject_no, 
-      subject_code, create_time, update_time, 
-      creator)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{subjectNo,jdbcType=VARCHAR}, 
-      #{subjectCode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{creator,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Subject">
-    insert into subject
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="subjectNo != null">
-        subject_no,
-      </if>
-      <if test="subjectCode != null">
-        subject_code,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="updateTime != null">
-        update_time,
-      </if>
-      <if test="creator != null">
-        creator,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="subjectNo != null">
-        #{subjectNo,jdbcType=VARCHAR},
-      </if>
-      <if test="subjectCode != null">
-        #{subjectCode,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="creator != null">
-        #{creator,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.explore.pojo.Subject" >
+    update subject
+    set subject_name = #{subjectName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

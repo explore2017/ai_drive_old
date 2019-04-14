@@ -1,15 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.explore.dao.SubjectStudentMapper">
-  <resultMap id="BaseResultMap" type="com.explore.pojo.SubjectStudent">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
-    <result column="student_id" jdbcType="INTEGER" property="studentId" />
-    <result column="exam_id" jdbcType="INTEGER" property="examId" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="count" jdbcType="INTEGER" property="count" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.explore.dao.SubjectStudentMapper" >
+  <resultMap id="BaseResultMap" type="com.explore.pojo.SubjectStudent" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="subject_id" property="subjectId" jdbcType="INTEGER" />
+    <result column="student_id" property="studentId" jdbcType="INTEGER" />
+    <result column="exam_id" property="examId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="count" property="count" jdbcType="INTEGER" />
   </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.SubjectStudent">
+  <sql id="Base_Column_List" >
+    id, subject_id, student_id, exam_id, status, count
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from subject_student
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from subject_student
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.explore.pojo.SubjectStudent" >
     insert into subject_student (id, subject_id, student_id, 
       exam_id, status, count
       )
@@ -17,165 +30,77 @@
       #{examId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{count,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.SubjectStudent">
+  <insert id="insertSelective" parameterType="com.explore.pojo.SubjectStudent" >
     insert into subject_student
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         id,
       </if>
-      <if test="subjectId != null">
+      <if test="subjectId != null" >
         subject_id,
       </if>
-      <if test="studentId != null">
+      <if test="studentId != null" >
         student_id,
       </if>
-      <if test="examId != null">
+      <if test="examId != null" >
         exam_id,
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         status,
       </if>
-      <if test="count != null">
+      <if test="count != null" >
         count,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="subjectId != null">
+      <if test="subjectId != null" >
         #{subjectId,jdbcType=INTEGER},
       </if>
-      <if test="studentId != null">
+      <if test="studentId != null" >
         #{studentId,jdbcType=INTEGER},
       </if>
-      <if test="examId != null">
+      <if test="examId != null" >
         #{examId,jdbcType=INTEGER},
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="count != null">
+      <if test="count != null" >
         #{count,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <resultMap id="BaseResultMap" type="com.explore.pojo.SubjectStudent">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
-    <result column="student_id" jdbcType="INTEGER" property="studentId" />
-    <result column="exam_id" jdbcType="INTEGER" property="examId" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="count" jdbcType="INTEGER" property="count" />
-  </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.SubjectStudent">
-    insert into subject_student (id, subject_id, student_id, 
-      exam_id, status, count
-      )
-    values (#{id,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, #{studentId,jdbcType=INTEGER}, 
-      #{examId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{count,jdbcType=INTEGER}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.SubjectStudent">
-    insert into subject_student
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+  <update id="updateByPrimaryKeySelective" parameterType="com.explore.pojo.SubjectStudent" >
+    update subject_student
+    <set >
+      <if test="subjectId != null" >
+        subject_id = #{subjectId,jdbcType=INTEGER},
       </if>
-      <if test="subjectId != null">
-        subject_id,
+      <if test="studentId != null" >
+        student_id = #{studentId,jdbcType=INTEGER},
       </if>
-      <if test="studentId != null">
-        student_id,
+      <if test="examId != null" >
+        exam_id = #{examId,jdbcType=INTEGER},
       </if>
-      <if test="examId != null">
-        exam_id,
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="status != null">
-        status,
+      <if test="count != null" >
+        count = #{count,jdbcType=INTEGER},
       </if>
-      <if test="count != null">
-        count,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="subjectId != null">
-        #{subjectId,jdbcType=INTEGER},
-      </if>
-      <if test="studentId != null">
-        #{studentId,jdbcType=INTEGER},
-      </if>
-      <if test="examId != null">
-        #{examId,jdbcType=INTEGER},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="count != null">
-        #{count,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <resultMap id="BaseResultMap" type="com.explore.pojo.SubjectStudent">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
-    <result column="student_id" jdbcType="INTEGER" property="studentId" />
-    <result column="exam_id" jdbcType="INTEGER" property="examId" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="count" jdbcType="INTEGER" property="count" />
-  </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.SubjectStudent">
-    insert into subject_student (id, subject_id, student_id, 
-      exam_id, status, count
-      )
-    values (#{id,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, #{studentId,jdbcType=INTEGER}, 
-      #{examId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{count,jdbcType=INTEGER}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.SubjectStudent">
-    insert into subject_student
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="subjectId != null">
-        subject_id,
-      </if>
-      <if test="studentId != null">
-        student_id,
-      </if>
-      <if test="examId != null">
-        exam_id,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="count != null">
-        count,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="subjectId != null">
-        #{subjectId,jdbcType=INTEGER},
-      </if>
-      <if test="studentId != null">
-        #{studentId,jdbcType=INTEGER},
-      </if>
-      <if test="examId != null">
-        #{examId,jdbcType=INTEGER},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="count != null">
-        #{count,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.explore.pojo.SubjectStudent" >
+    update subject_student
+    set subject_id = #{subjectId,jdbcType=INTEGER},
+      student_id = #{studentId,jdbcType=INTEGER},
+      exam_id = #{examId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      count = #{count,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

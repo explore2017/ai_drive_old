@@ -1,16 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.explore.dao.CampusMapper">
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Campus">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="position" jdbcType="VARCHAR" property="position" />
-    <result column="organ_id" jdbcType="INTEGER" property="organId" />
-    <result column="coach_sum" jdbcType="INTEGER" property="coachSum" />
-    <result column="student_sum" jdbcType="INTEGER" property="studentSum" />
-    <result column="vehicle_sum" jdbcType="INTEGER" property="vehicleSum" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.explore.dao.CampusMapper" >
+  <resultMap id="BaseResultMap" type="com.explore.pojo.Campus" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="organ_id" property="organId" jdbcType="INTEGER" />
+    <result column="coach_sum" property="coachSum" jdbcType="INTEGER" />
+    <result column="student_sum" property="studentSum" jdbcType="INTEGER" />
+    <result column="vehicle_sum" property="vehicleSum" jdbcType="INTEGER" />
   </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Campus">
+  <sql id="Base_Column_List" >
+    id, name, position, organ_id, coach_sum, student_sum, vehicle_sum
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from campus
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from campus
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.explore.pojo.Campus" >
     insert into campus (id, name, position, 
       organ_id, coach_sum, student_sum, 
       vehicle_sum)
@@ -18,185 +31,87 @@
       #{organId,jdbcType=INTEGER}, #{coachSum,jdbcType=INTEGER}, #{studentSum,jdbcType=INTEGER}, 
       #{vehicleSum,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Campus">
+  <insert id="insertSelective" parameterType="com.explore.pojo.Campus" >
     insert into campus
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         id,
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         name,
       </if>
-      <if test="position != null">
+      <if test="position != null" >
         position,
       </if>
-      <if test="organId != null">
+      <if test="organId != null" >
         organ_id,
       </if>
-      <if test="coachSum != null">
+      <if test="coachSum != null" >
         coach_sum,
       </if>
-      <if test="studentSum != null">
+      <if test="studentSum != null" >
         student_sum,
       </if>
-      <if test="vehicleSum != null">
+      <if test="vehicleSum != null" >
         vehicle_sum,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="position != null">
+      <if test="position != null" >
         #{position,jdbcType=VARCHAR},
       </if>
-      <if test="organId != null">
+      <if test="organId != null" >
         #{organId,jdbcType=INTEGER},
       </if>
-      <if test="coachSum != null">
+      <if test="coachSum != null" >
         #{coachSum,jdbcType=INTEGER},
       </if>
-      <if test="studentSum != null">
+      <if test="studentSum != null" >
         #{studentSum,jdbcType=INTEGER},
       </if>
-      <if test="vehicleSum != null">
+      <if test="vehicleSum != null" >
         #{vehicleSum,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Campus">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="position" jdbcType="VARCHAR" property="position" />
-    <result column="organ_id" jdbcType="INTEGER" property="organId" />
-    <result column="coach_sum" jdbcType="INTEGER" property="coachSum" />
-    <result column="student_sum" jdbcType="INTEGER" property="studentSum" />
-    <result column="vehicle_sum" jdbcType="INTEGER" property="vehicleSum" />
-  </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Campus">
-    insert into campus (id, name, position, 
-      organ_id, coach_sum, student_sum, 
-      vehicle_sum)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
-      #{organId,jdbcType=INTEGER}, #{coachSum,jdbcType=INTEGER}, #{studentSum,jdbcType=INTEGER}, 
-      #{vehicleSum,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Campus">
-    insert into campus
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+  <update id="updateByPrimaryKeySelective" parameterType="com.explore.pojo.Campus" >
+    update campus
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="name != null">
-        name,
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
       </if>
-      <if test="position != null">
-        position,
+      <if test="organId != null" >
+        organ_id = #{organId,jdbcType=INTEGER},
       </if>
-      <if test="organId != null">
-        organ_id,
+      <if test="coachSum != null" >
+        coach_sum = #{coachSum,jdbcType=INTEGER},
       </if>
-      <if test="coachSum != null">
-        coach_sum,
+      <if test="studentSum != null" >
+        student_sum = #{studentSum,jdbcType=INTEGER},
       </if>
-      <if test="studentSum != null">
-        student_sum,
+      <if test="vehicleSum != null" >
+        vehicle_sum = #{vehicleSum,jdbcType=INTEGER},
       </if>
-      <if test="vehicleSum != null">
-        vehicle_sum,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="position != null">
-        #{position,jdbcType=VARCHAR},
-      </if>
-      <if test="organId != null">
-        #{organId,jdbcType=INTEGER},
-      </if>
-      <if test="coachSum != null">
-        #{coachSum,jdbcType=INTEGER},
-      </if>
-      <if test="studentSum != null">
-        #{studentSum,jdbcType=INTEGER},
-      </if>
-      <if test="vehicleSum != null">
-        #{vehicleSum,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <resultMap id="BaseResultMap" type="com.explore.pojo.Campus">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="position" jdbcType="VARCHAR" property="position" />
-    <result column="organ_id" jdbcType="INTEGER" property="organId" />
-    <result column="coach_sum" jdbcType="INTEGER" property="coachSum" />
-    <result column="student_sum" jdbcType="INTEGER" property="studentSum" />
-    <result column="vehicle_sum" jdbcType="INTEGER" property="vehicleSum" />
-  </resultMap>
-  <insert id="insert" parameterType="com.explore.pojo.Campus">
-    insert into campus (id, name, position, 
-      organ_id, coach_sum, student_sum, 
-      vehicle_sum)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
-      #{organId,jdbcType=INTEGER}, #{coachSum,jdbcType=INTEGER}, #{studentSum,jdbcType=INTEGER}, 
-      #{vehicleSum,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.explore.pojo.Campus">
-    insert into campus
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="position != null">
-        position,
-      </if>
-      <if test="organId != null">
-        organ_id,
-      </if>
-      <if test="coachSum != null">
-        coach_sum,
-      </if>
-      <if test="studentSum != null">
-        student_sum,
-      </if>
-      <if test="vehicleSum != null">
-        vehicle_sum,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="position != null">
-        #{position,jdbcType=VARCHAR},
-      </if>
-      <if test="organId != null">
-        #{organId,jdbcType=INTEGER},
-      </if>
-      <if test="coachSum != null">
-        #{coachSum,jdbcType=INTEGER},
-      </if>
-      <if test="studentSum != null">
-        #{studentSum,jdbcType=INTEGER},
-      </if>
-      <if test="vehicleSum != null">
-        #{vehicleSum,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.explore.pojo.Campus" >
+    update campus
+    set name = #{name,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      organ_id = #{organId,jdbcType=INTEGER},
+      coach_sum = #{coachSum,jdbcType=INTEGER},
+      student_sum = #{studentSum,jdbcType=INTEGER},
+      vehicle_sum = #{vehicleSum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>
