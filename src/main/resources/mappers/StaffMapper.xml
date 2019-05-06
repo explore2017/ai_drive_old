@@ -22,6 +22,12 @@
     from staff
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="login" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from staff
+    where name = #{name} and password = #{password}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from staff
     where id = #{id,jdbcType=INTEGER}

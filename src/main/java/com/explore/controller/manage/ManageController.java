@@ -3,6 +3,7 @@ package com.explore.controller.manage;
 import com.explore.common.Const;
 import com.explore.common.ServerResponse;
 import com.explore.pojo.Coach;
+import com.explore.pojo.Staff;
 import com.explore.pojo.Student;
 import com.explore.service.IManageService;
 import org.apache.catalina.Manager;
@@ -23,11 +24,11 @@ public class ManageController {
      * 管理员登录
      */
     @PostMapping("/login")
-    public ServerResponse login(@RequestBody String username, String password, HttpSession session) {
-        ServerResponse<Manager> serverResponse = manageService.login(username, password);
+    public ServerResponse login(@RequestBody String username,@RequestBody String password, HttpSession session) {
+        ServerResponse<Staff> serverResponse = manageService.login(username, password);
         if (serverResponse.isSuccess()) {
-            Manager manager = serverResponse.getData();
-            session.setAttribute(Const.CURRENT_USER,manager);
+           Staff staff = serverResponse.getData();
+            session.setAttribute(Const.CURRENT_USER,staff);
         }
         return serverResponse;
     }
@@ -37,7 +38,7 @@ public class ManageController {
      */
     @PutMapping("/password")
     public ServerResponse revise(String username, String oldPassword, String newPassword) {
-        ServerResponse serverResponse = manageService.revise(username, oldPassword, newPassword);
+        ServerResponse serverResponse = manageService.revisePassword(username, oldPassword, newPassword);
         return serverResponse;
     }
 
@@ -45,7 +46,7 @@ public class ManageController {
      * 查看所有学生数据
      */
     @GetMapping("/students")
-    public ServerResponse<List<Student>> getAllStudent(Student student){
+    public ServerResponse<List<Student>> getAllStudent(){
         ServerResponse<List<Student>> serverResponse=manageService.Students();
         return serverResponse;
     }
@@ -81,8 +82,8 @@ public class ManageController {
     /**
      * 查看所有教练数据
      */
-    @GetMapping("/Coachs")
-    public ServerResponse<List<Coach>> getAllStudent(Coach teacher){
+    @GetMapping("/Coaches")
+    public ServerResponse<List<Coach>> getAllCoach(){
         ServerResponse<List<Coach>> serverResponse=manageService.Coachs();
         return serverResponse;
     }
@@ -91,11 +92,9 @@ public class ManageController {
      * 教练添加
      */
     @PostMapping("/insertTeacher")
-    public ServerResponse addTeacher(@RequestBody Coach teacher) {
-//        String[] subjectId=teacher.getSubjectId().split(",");
-//        ServerResponse serverResponse = manageService.addCoach(teacher,subjectId);
-//        return serverResponse;
-        return ServerResponse.createBySuccessMessage("success");
+    public ServerResponse addTeacher(@RequestBody Coach coach) {
+        ServerResponse serverResponse = manageService.addCoach(coach);
+        return serverResponse;
     }
 
     /**
@@ -111,11 +110,9 @@ public class ManageController {
      * 修改教练信息
      */
     @PutMapping("/reviseTeacher")
-    public ServerResponse reviseTeacher(@RequestBody Coach teacher) {
-//        String[] subjectId=teacher.getSubjectId().split(",");
-//        ServerResponse serverResponse = manageService.reviseCoach(teacher,subjectId);
-//        return serverResponse;
-        return ServerResponse.createBySuccessMessage("success");
+    public ServerResponse reviseTeacher( Coach coach) {
+        ServerResponse serverResponse = manageService.reviseCoach(coach);
+        return serverResponse;
     }
 
 }

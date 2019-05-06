@@ -14,10 +14,32 @@
     id, name, subject_id, subscribe, position, start_time, end_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+  select
+  <include refid="Base_Column_List" />
+  from exam
+  where id = #{id,jdbcType=INTEGER}
+</select>
+  <select id="searchExam" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+   SELECT
+exam.id,
+exam.`name`,
+exam.subject_id,
+exam.subscribe,
+exam.position,
+exam.start_time,
+exam.end_time
+FROM
+exam ,
+subject_student
+WHERE
+subject_student.student_id = #{studentId,jdbcType=INTEGER} AND
+exam.id = subject_student.exam_id AND
+subject_student.`status` = 0
+  </select>
+  <select id="allExam" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
     <include refid="Base_Column_List" />
     from exam
-    where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from exam

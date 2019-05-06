@@ -2,6 +2,7 @@ package com.explore.service;
 
 import com.explore.common.ServerResponse;
 import com.explore.pojo.Coach;
+import com.explore.pojo.Staff;
 import com.explore.pojo.Student;
 import org.apache.catalina.Manager;
 
@@ -9,9 +10,9 @@ import java.util.List;
 
 public interface IManageService {
 
-    ServerResponse<Manager> login(String username, String password);
+    ServerResponse<Staff> login(String username, String password);
 
-    ServerResponse revise(String username, String oldPassword, String newPassword);
+    ServerResponse revisePassword(String username, String oldPassword, String newPassword);
 
     ServerResponse<List<Student>> Students();
 
@@ -23,9 +24,9 @@ public interface IManageService {
 
     ServerResponse<List<Coach>> Coachs();
 
-    ServerResponse addCoach(Coach teacher, String[] subjectId);
+    ServerResponse addCoach(Coach coach);
 
     ServerResponse outCoach(Integer id);
 
-    ServerResponse reviseCoach(Coach teacher, String[] subjectId);
+    ServerResponse reviseCoach(Coach coach);
 }

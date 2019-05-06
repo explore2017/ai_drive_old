@@ -2,6 +2,8 @@ package com.explore.dao;
 
 import com.explore.pojo.Exam;
 
+import java.util.List;
+
 public interface ExamMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,8 @@ public interface ExamMapper {
     int updateByPrimaryKeySelective(Exam record);
 
     int updateByPrimaryKey(Exam record);
+
+    List<Exam> allExam();
+
+    List<Exam> searchExam(Integer studentId);
 }

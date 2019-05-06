@@ -1,21 +1,20 @@
 package com.explore.controller;
 
 import com.explore.common.ServerResponse;
-import com.explore.pojo.Campus;
-import com.explore.pojo.Coach;
-import com.explore.pojo.Exam;
-import com.explore.pojo.Vehicle;
+import com.explore.pojo.*;
 import com.explore.service.ICampusService;
 import com.explore.service.IManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/campus")
 public class CampusController {
 
     @Autowired
-    ICampusService CampusService;
+    ICampusService campusService;
 
 
     /**
@@ -23,10 +22,10 @@ public class CampusController {
      * @param campus
      * @return
      */
-    @PostMapping("/searchStudents")
-    public ServerResponse searchStudents(@RequestBody Campus campus) {
-
-        return ServerResponse.createBySuccessMessage("success");
+    @GetMapping("/searchStudents")
+    public ServerResponse<List<Student>> searchStudents(Campus campus) {
+        ServerResponse serverResponse = campusService.searchStudents(campus);
+        return serverResponse;
     }
 
     /**
@@ -34,10 +33,10 @@ public class CampusController {
      * @param campus
      * @return
      */
-    @PostMapping("/searchCoachs")
-    public ServerResponse searchCoachs(@RequestBody Campus campus) {
-
-        return ServerResponse.createBySuccessMessage("success");
+    @GetMapping("/searchCoaches")
+    public ServerResponse<List<Coach>> searchCoaches( Campus campus) {
+        ServerResponse<List<Coach>> serverResponse = campusService.searchCoaches(campus);
+        return serverResponse;
     }
 
     /**
@@ -45,10 +44,10 @@ public class CampusController {
      * @param campus
      * @return
      */
-    @PostMapping("/searchVehicles")
-    public ServerResponse searchVehicles(@RequestBody Campus campus) {
-
-        return ServerResponse.createBySuccessMessage("success");
+    @GetMapping("/searchVehicles")
+    public ServerResponse<List<Vehicle>> searchVehicles( Campus campus) {
+        ServerResponse<List<Vehicle>> serverResponse = campusService.searchVehicles(campus);
+        return serverResponse;
     }
 
     /**
@@ -70,7 +69,7 @@ public class CampusController {
      */
     @DeleteMapping("/deleteCampus")
     public ServerResponse deleteCampus(Campus campus) {
-
-        return ServerResponse.createBySuccessMessage("success");
+        ServerResponse serverResponse = campusService.deleteCampus(campus);
+        return serverResponse;
     }
 }

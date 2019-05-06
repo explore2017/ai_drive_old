@@ -2,6 +2,8 @@ package com.explore.dao;
 
 import com.explore.pojo.Coach;
 
+import java.util.List;
+
 public interface CoachMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,10 @@ public interface CoachMapper {
     int updateByPrimaryKeySelective(Coach record);
 
     int updateByPrimaryKey(Coach record);
+
+    List<Coach> getAllCoach();
+
+    String maxJob_id();
+
+    List<Coach> searchCoaches(Integer campus_id);
 }

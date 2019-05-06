@@ -10,10 +10,15 @@
     id, subject_name, price
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+  select
+  <include refid="Base_Column_List" />
+  from subject
+  where id = #{id,jdbcType=INTEGER}
+</select>
+  <select id="allSubject" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
     <include refid="Base_Column_List" />
     from subject
-    where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from subject

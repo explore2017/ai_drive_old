@@ -19,6 +19,47 @@
     from student
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="searchStudent" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from student
+    where campus_id = #{campusId,jdbcType=INTEGER}
+  </select>
+  <select id="getStudentId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from student
+    where name = #{name,jdbcType=VARCHAR} and phone =  #{phone,jdbcType=VARCHAR}
+  </select>
+  <select id="searchStudentExam" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    student.<include refid="Base_Column_List" />
+    from student,subject_student
+    where subject_student.exam_id = #{examId,jdbcType=INTEGER} and student.id = subject_student.student_id;
+  </select>
+  <select id="searchPass" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    student.<include refid="Base_Column_List" />
+    from student,subject_student
+    where subject_student.exam_id = #{examId,jdbcType=INTEGER} and student.id = subject_student.student_id and subject_student.status=1;
+  </select>
+  <select id="getAllStudent" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from student
+  </select>
+  <select id="showStudent" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from student
+    where name = #{name,jdbcType=VARCHAR} and phone =  #{phone,jdbcType=VARCHAR}
+  </select>
+  <select id="unPassStudent" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from student
+    where coach_id = #{id,jdbcType=INTEGER} and status = 0
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from student
     where id = #{id,jdbcType=INTEGER}

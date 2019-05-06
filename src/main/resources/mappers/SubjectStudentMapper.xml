@@ -13,10 +13,16 @@
     id, subject_id, student_id, exam_id, status, count
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from subject_student
     where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="showStudentState" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from subject_student
+    where student_id=#{studentId,jdbcType=INTEGER} and exam_id !=-1
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from subject_student

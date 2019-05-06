@@ -19,6 +19,12 @@
     from campus
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="searchCampusOrgan" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from campus
+    where organ_id =  #{organId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from campus
     where id = #{id,jdbcType=INTEGER}
